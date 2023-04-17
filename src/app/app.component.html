@@ -1,0 +1,7 @@
+<app-header (loadingChanged)="onLoadingChanged"></app-header>
+<div class="container">
+  <app-task-list (loadingChanged)="onLoadingChanged()"></app-task-list>
+</div>
+<div class="loader" *ngIf="isLoading">
+  <div class="spinner">Hola</div>
+</div>

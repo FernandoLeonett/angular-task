@@ -1,0 +1,78 @@
+<h1 mat-dialog-title>Edit Task</h1>
+<div mat-dialog-content>
+  <form [formGroup]="taskForm">
+    <div class="form-row">
+      <mat-form-field appearance="fill">
+        <mat-label>ID</mat-label>
+        <input matInput disabled [value]="data._id">
+      </mat-form-field>
+    </div>
+    
+    <div class="form-row">
+      <mat-form-field appearance="fill">
+
+        <mat-label>Title</mat-label>
+        <input matInput formControlName="title" placeholder="Title" [value]="data.title">
+        <mat-error *ngIf="taskForm.get('title')?.hasError('required')">
+          Title is required.
+        </mat-error>
+        <mat-error *ngIf="taskForm.get('title')?.hasError('minlength')">
+          Title must be at least 3 characters long.
+        </mat-error>
+      </mat-form-field>
+    </div>
+    
+    <div class="form-row">
+      <mat-form-field appearance="fill" class="description-field">
+        <mat-label>Description</mat-label>
+        <textarea matInput formControlName="description" placeholder="Description" [value]="data.description"></textarea>
+        <mat-error *ngIf="taskForm.get('description')?.hasError('required')">
+          Description is required.
+        </mat-error>
+        <mat-error *ngIf="taskForm.get('description')?.hasError('minlength')">
+          Description must be at least 3 characters long.
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="form-row">
+      <mat-form-field appearance="fill">
+        <mat-label>Category</mat-label>
+        <mat-select formControlName="category" [value]="data.category">
+          <mat-option *ngFor="let category of categories" [value]="category">
+            {{ category }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="taskForm.get('category')?.hasError('required')">
+          Category is required.
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="form-row">
+      <mat-form-field appearance="fill">
+        <mat-label>Expiration</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="expiration" placeholder="Expiration" [value]="data.expiration">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-error *ngIf="taskForm.get('expiration')?.hasError('required')">
+          Expiration is required.
+        </mat-error>
+        <mat-error *ngIf="taskForm.get('expiration')?.hasError('pastDate')">
+          Expiration must be in the future.
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="form-row radio-group">
+      <mat-radio-group formControlName="completed" [value]="data.completed">
+        <mat-radio-button [value]="true">Completed</mat-radio-button>
+        <mat-radio-button [value]="false">Not Completed</mat-radio-button>
+      </mat-radio-group>
+    </div>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onCancelClick()">Cancel</button>
+  <button mat-button color="primary" (click)="onSaveClick()">Save</button>
+</div>

@@ -1,0 +1,40 @@
+mat-toolbar {
+  min-height: 64px;
+}
+
+.mat-h2 {
+  margin: 0;
+}
+
+.small-btn {
+  font-size: 0.8rem;
+  margin-left: 1rem;
+}
+
+.filter-section {
+  margin-left: 1rem;
+}
+
+.add-task-section {
+  margin-right: 1rem;
+}
+
+@media screen and (max-width: 599px) {
+  .mat-h2 {
+    font-size: 1.5rem;
+  }
+
+  .small-btn {
+    font-size: 1rem;
+    margin-left: 0.5rem;
+    padding: 0.5rem;
+  }
+
+  .filter-section {
+    margin-left: 0;
+  }
+
+  .add-task-section {
+    margin-right: 0;
+  }
+}

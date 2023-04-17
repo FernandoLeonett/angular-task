@@ -1,0 +1,9 @@
+<h2 mat-dialog-title>Confirmar acción</h2>
+<mat-dialog-content>
+  <p>La Tarea : {{task.title}} sera eliminada permamenntemente</p>
+  <p>id : {{task._id}}</p>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="onCancelClick()">Cancelar</button>
+  <button mat-button (click)="onDeleteClickConfirm() "color="warn" [mat-dialog-close]="true">Eliminar</button>
+</mat-dialog-actions>
